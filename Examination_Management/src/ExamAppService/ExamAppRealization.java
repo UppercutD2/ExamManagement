@@ -90,16 +90,26 @@ public class ExamAppRealization {
                 break;
             }
         }
-        return que;
+        if(que!=null) {
+            return que;
+        }
+        else
+        {
+            throw new RuntimeException("Question with such ID, don't exist");
+        }
     }
 
 
     public void printExam_DB()
-    {
-        for(Question q : Exam_Obj.examData.getQuestionsList())
-        {
+    {   if(Exam_Obj.examData.getQuestionsList().size()!=0) {
+        for (Question q : Exam_Obj.examData.getQuestionsList()) {
             System.out.println(q.getId() + ") " + q.getQuestion());
         }
+    }
+    else
+    {
+        System.err.println("No question has been added yet");
+    }
 
     }//prints question with Id number
 

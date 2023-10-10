@@ -1,6 +1,8 @@
 package Data_Obj;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable {
 
 
     private int id;

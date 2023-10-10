@@ -22,12 +22,13 @@ public class ExamAppService {
 //                    7) Load file+
 //                    8)  Cancel
 
-    public void start(boolean isActive)
+    public void start(boolean isActive) throws InterruptedException
     {
         ExamAppRealization examAppRealization = new ExamAppRealization();
 
         while (isActive)
         {
+            Thread.sleep(50);
             System.out.println(Exam_Message_Links.ExamDataBaseMenuStr);
             String option = Scanner_Utils.requireString("Choose your option: ");
 
@@ -40,9 +41,14 @@ public class ExamAppService {
                     examAppRealization.printExam_DB();
                     break;
                 case "2":
-                    System.out.println(
-                     examAppRealization.getQ(Integer.parseInt(Scanner_Utils.requireString("Enter question ID"))).examTestStr()
-                                        );
+                    try {
+                        System.out.println(
+                                examAppRealization.getQ(Integer.parseInt(Scanner_Utils.requireString("Enter question ID: ")))
+                        );
+                    }catch(RuntimeException ex)
+                    {
+                        System.err.println(ex.getMessage());
+                    }
                     //I can write it in separate method, but why should I ?:-)
                     break;
                 case "3":

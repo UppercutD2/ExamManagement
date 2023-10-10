@@ -1,9 +1,10 @@
 package Data_Obj;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExamData  {
+public class ExamData implements Serializable {
 
     private int id;
     private static int sequenceID;

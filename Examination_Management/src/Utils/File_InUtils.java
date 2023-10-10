@@ -38,8 +38,8 @@ public class File_InUtils {
 
     public File getFile() throws FileNotFoundException
     {
-        Exam_Message_Links.Exam_Data_File_Path = Scanner_Utils.requireString("Please input Absolute Path for Question DB");
-        String filename = Scanner_Utils.requireString("Please Advise File Name and Extension");
+        Exam_Message_Links.Exam_Data_File_Path = Scanner_Utils.requireString("Please input Absolute Path for Question DB: ");
+        String filename = Scanner_Utils.requireString("Please Advise File Name and Extension: ");
         Exam_Message_Links.Exam_Data_File_Path +="\\"+ filename;
         File file = new File(Exam_Message_Links.Exam_Data_File_Path);
         if(!file.exists())

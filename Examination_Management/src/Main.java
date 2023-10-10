@@ -5,7 +5,11 @@ import ExamAppService.ExamAppService;
 public class Main {
     public static void main(String[] args) {
          ExamAppService examAppService = new ExamAppService();
-         examAppService.start(true);
+         try {
+             examAppService.start(true);
+         }catch (InterruptedException ex)
+         {
 
+         }
     }
 }
