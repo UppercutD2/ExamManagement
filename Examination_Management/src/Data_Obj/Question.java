@@ -68,7 +68,7 @@ public class Question {
     }
 
     public void setCorrect(String correct) {
-        this.correct = correct;
+                this.correct = correct;
     }
 
 

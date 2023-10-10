@@ -49,6 +49,7 @@ public class ExamAppService {
                     examAppRealization.addQuestion();
                     break;
                 case "4":
+                    editQ_Menu(examAppRealization);
                     //Method to Edit question if that will be needed I don't Know.
                     break;
                 case "5":
@@ -61,7 +62,7 @@ public class ExamAppService {
                     examAppRealization.loadQuestions_DB();
                     break;
                 default:
-                    System.out.println("Wrong operation selected");
+                    System.err.println("Wrong operation selected");
             }
         }
     }
@@ -69,11 +70,11 @@ public class ExamAppService {
     public void editQ_Menu(ExamAppRealization examAppRealization)
     {
         Question q = examAppRealization.getQ(Integer.parseInt(Scanner_Utils.requireString("Enter ID of Quesiton to edit: ")));
-
+            editQuestion(examAppRealization,q,true);
     }
 
 
-    private void editQuestion(Question q,boolean isActive)
+    private void editQuestion(ExamAppRealization examAppRealization,Question q,boolean isActive)
     {
         while(isActive)
         {
@@ -90,7 +91,27 @@ public class ExamAppService {
                     q.setQuestion(Scanner_Utils.requireString("New Question"));
                     break;
                 case "2":
-                    System.out.println();
+                    System.out.println("Currenct option - A" +q.getOpt_A());
+                    q.setOpt_A(Scanner_Utils.requireString("A- option: "));//option A
+                    break;
+                case "3":
+                    System.out.println("Currenct option - B" +q.getOpt_B());
+                    q.setOpt_B(Scanner_Utils.requireString("B- option: "));//option B
+                    break;
+                case "4":
+                    System.out.println("Currenct option - C" +q.getOpt_C());
+                    q.setOpt_C(Scanner_Utils.requireString("C- option: "));//option C
+                    break;
+                case "5":
+                    System.out.println("Currenct option - D" +q.getOpt_D());
+                    q.setOpt_D(Scanner_Utils.requireString("D- option: "));//option D
+                    break;
+                case "6":
+                    System.out.println("Current Correct Option "+q.getCorrect());
+                    examAppRealization.setCorrectOption(q);//change correct option
+                    break;
+                default:
+                    System.err.println("Wrong option selected");
 
 
             }

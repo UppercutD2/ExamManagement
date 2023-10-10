@@ -41,8 +41,28 @@ public class ExamAppRealization {
         q.setOpt_B(Scanner_Utils.requireString("B- option: "));
         q.setOpt_C(Scanner_Utils.requireString("C- option: "));
         q.setOpt_D(Scanner_Utils.requireString("D- option: "));
-        q.setCorrect(Scanner_Utils.requireString("Set correct option (A, B, C, D)").toUpperCase());
+        setCorrectOption(q);
         return q;
+    }
+
+    public void setCorrectOption(Question q)
+    {
+        while(true)
+        {
+            String correct =Scanner_Utils.requireString("Set correct option (A, B, C, D)").toUpperCase();
+            if (correct.equalsIgnoreCase("A")
+               || correct.equalsIgnoreCase("B")
+               || correct.equalsIgnoreCase("C")
+               || correct.equalsIgnoreCase("D"))
+            {
+                q.setCorrect(correct);
+                break;
+            }
+            else
+            {
+                System.err.println("Invalid option selected");
+            }
+        }
     }
 
     public void saveQuestions_DB()
